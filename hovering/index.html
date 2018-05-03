@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vue App</title>
+  <script src="https://unpkg.com/vue"></script>
+  <link rel="stylesheet" href="../vue.css">
+</head>
+<body>
+  <div id="app">
+    <div @mouseover="shown = true; rand()" @mouseleave="shown = false" >
+      <h2> Hover over me for your random number! </h2>
+    </div>
+    <div v-show="shown">{{randNum}}</div>
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        randNum: Math.floor(Math.random() * 100) +1,
+        shown: false
+      },
+    methods: {
+        rand: function() {
+          this.randNum = Math.floor(Math.random() * 100) +1;
+        }
+    }
+    })
+  </script>
+</body>
+</html>

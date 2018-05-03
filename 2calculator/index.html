@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vue App</title>
+  <script src="https://unpkg.com/vue"></script>
+  <script src="https://unpkg.com/babel-polyfill@latest/dist/polyfill.min.js"></script>
+  <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap/dist/css/bootstrap.min.css"/>
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.css"/>
+  <link rel="stylesheet" href="vue.css">
+</head>
+<body>
+  <div id="app">
+    <h1>{{title}}</h1>
+    <div class="input">
+      <input @focus="result = null" class="left-input" v-model="num1" size='15' v- placeholder="First number"/>
+      <div class="btn-group-vertical">
+        <button class="btn btn-primary" v-on:click="add" > Add </button>
+        <button class="btn btn-primary middle-btn" v-on:click="subtract" > Subtract </button>
+        <button class="btn btn-primary middle-btn" v-on:click="multiply" > Multiply </button>
+        <button class="btn btn-primary" v-on:click="divide" > Divide </button>
+      </div>
+      <input @focus="result = null" class="right-input" v-model="num2" size='15' placeholder="Second number"/>
+    </div>
+
+    <div class="result"> Answer: {{result}} </div>
+  </div>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        title: '2 Number Calculator',
+        num1: null,
+        num2: null,
+        result: null
+      },
+      methods: {
+        add() {
+          this.result = parseInt(this.num1) + parseInt(this.num2);
+        }, subtract() {
+          this.result = this.num1 - this.num2;
+        }, multiply() {
+          this.result = this.num1 * this.num2;
+        }, divide() {
+          this.result = this.num1 / this.num2;
+        }
+      }
+    })
+  </script>
+  </body>
+</html>
