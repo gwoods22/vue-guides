@@ -5,6 +5,10 @@ body {
   color: #007bff;
 }
 
+input {
+    outline: none
+}
+
 html body {
   background-color: #dddddd;
 }
@@ -22,7 +26,14 @@ html body {
   font-size: 20px;
 }
 
-.middle-btn {
+.middle-btn:hover {
+  border-left: 2px;
+  border-right: 2px;
+  border-color: white;
+  z-index: 9999;
+}
+
+.middle-btn{
   border-left: 2px;
   border-right: 2px;
   border-color: white;
@@ -31,4 +42,8 @@ html body {
 
 button {
   padding: 3px !important;
+}
+
+button:focus {
+    outline: none !important;
 }
