@@ -3,20 +3,20 @@
 <head>
   <title>Vue App</title>
   <script src="https://unpkg.com/vue"></script>
-  <link rel="stylesheet" href="http://davidtkatz.com/public_css/vue.css">
+  <link rel="stylesheet" href="../vue.css">
 </head>
 <body>
   <div id="app">
-    <counter v-bind:add-num="10"></counter>
+    <counter v-bind:add-num="5"></counter>
   </div>
+
   <script>
     var counter = Vue.component('counter', {
       template: `
-        <div>
-          <div>Count: {{this.count}}</div>
-          <button class="vue-btn" @click="increment">Increment by {{this.addNum}}</button>
-        </div>
-      `,
+      <div>
+        <h2>Count: {{this.count}}</h2>
+        <button @click="increment">Increment by {{this.addNum}}</button>
+      </div>`,
       props: {
         addNum: {
           type: Number,
@@ -27,8 +27,7 @@
         return {
           count: 0
         }
-      },
-      methods: {
+      }, methods: {
         increment() {
           this.count += this.addNum
         }
@@ -37,7 +36,7 @@
 
     var app = new Vue({
       el: '#app',
-      components: {
+      components:{
         counter
       }
     })

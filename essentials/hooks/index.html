@@ -3,15 +3,14 @@
 <head>
   <title>Vue App</title>
   <script src="https://unpkg.com/vue"></script>
-  <link rel="stylesheet" href="http://davidtkatz.com/public_css/vue.css">
+  <link rel="stylesheet" href="../vue.css">
 </head>
 <body>
   <div id="app">
-    <div class="">
-      Count: {{count}}
-    </div>
-    <button class="vue-btn" @click="increment">Increment</button>
+    <h2>Count: {{this.count}}</h2>
+    <button @click="increment">Increment</button>
   </div>
+
   <script>
     var app = new Vue({
       el: '#app',
@@ -21,10 +20,29 @@
       methods: {
         increment() {
           this.count++
+        },
+        currentTime(prefix) {
+          var now = new Date();
+          if (now.getTimezoneOffset() % 60 == 0) {
+            var hrs = now.getUTCHours()-now.getTimezoneOffset()/60;
+            var mins = now.getUTCMinutes();
+          } else {
+            var hrs = now.getUTCHours()-now.getTimezoneOffset()/60;
+            var mins = now.getUTCMinutes-now.getTimezoneOffset()%60;
+          }
+          var sec = now.getUTCSeconds();
+          var mill = now.getUTCMilliseconds();
+          console.log(`${prefix} @ `+hrs+':'+mins+':'+sec+'.'+mill);
         }
       },
       updated() {
-        console.log('this.count', this.count)
+        this.currentTime('this.count = '+ this.count.toString()+' ');
+      },
+      created() {
+        this.currentTime('Page created');
+      },
+      mounted() {
+        this.currentTime('Page loaded ');
       }
     })
   </script>

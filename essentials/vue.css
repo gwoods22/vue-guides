@@ -19,3 +19,11 @@ ul {
   padding: 0;
   line-height: 1.5;
 }
+
+button {
+  color: white;
+  background-color: #4fb685;
+  border-radius: 5px;
+  font-size: 15px;
+  outline: none;
+}

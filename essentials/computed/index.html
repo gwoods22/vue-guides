@@ -3,14 +3,15 @@
 <head>
   <title>Vue App</title>
   <script src="https://unpkg.com/vue"></script>
-  <link rel="stylesheet" href="http://davidtkatz.com/public_css/vue.css">
+  <link rel="stylesheet" href="../vue.css">
 </head>
 <body>
   <div id="app">
     <span>Change the text</span>
-    <input v-model="text" placeholder="text..." />
+    <input v-model.lazy="text" placeholder="text..." />
     <div>Lowercased: {{lowerText}}</div>
   </div>
+
   <script>
     var app = new Vue({
       el: '#app',
